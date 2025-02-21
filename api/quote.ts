@@ -21,17 +21,14 @@ const quotes = [
 ];
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
-	// Enable CORS manually since we're not using Express middleware
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Methods", "GET");
 
-	// Log request URL for debugging
+	// this will show up in Vercel logs
 	console.log("Request received:", req.url);
 
-	// Select a random quote
 	const randomIndex = Math.floor(Math.random() * quotes.length);
 	const selectedQuote = quotes[randomIndex];
 
-	// Send JSON response
 	res.status(200).json(selectedQuote);
 }
